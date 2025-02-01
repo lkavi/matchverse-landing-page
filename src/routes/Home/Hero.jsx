@@ -67,13 +67,13 @@ const Hero = () => {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="py-3 px-4 w-[300px] rounded-md text-black text-lg mb-4"
+              className="py-3 px-4 w-[300px] rounded-full text-center bg-white bg-opacity-20 text-black text-lg mb-4"
               required
               disabled={isLoading}
             />
             <button
               type="submit"
-              className={`py-3 bg-[#b2ff5fdc] w-[200px] rounded-md text-black text-lg  ${
+              className={`py-3 bg-[#b2ff5fdc] w-[200px] rounded-full text-black text-lg  ${
                 isLoading ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               disabled={isLoading}
