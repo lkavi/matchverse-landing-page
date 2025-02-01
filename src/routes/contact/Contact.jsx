@@ -15,7 +15,7 @@ const Contact = () => {
     {
       title: "Yehali Kossinna",
       src: Yehali,
-      role: "Designer"
+      role: "Emotional Support"
     },
     {
       title: "Gowtham Raveeindran",
