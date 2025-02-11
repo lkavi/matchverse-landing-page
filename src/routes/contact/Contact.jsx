@@ -1,8 +1,11 @@
 import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import { FocusCards } from '../../components/ui/Focus-cards'
-import Kaviseshan from '../../assets/Kaviseshan.jpeg'
+import Kaviseshan from '../../assets/Kaviseshan.png'
 import Yehali from '../../assets/Yehali.jpeg'
+import Gowtham from '../../assets/Gowtham.jpeg'
+import Dhuwarakesh from '../../assets/Dhuwarakesh.jpeg'
+import Sihala from '../../assets/Sihala.png'
 
 const Contact = () => {
 
@@ -15,27 +18,27 @@ const Contact = () => {
     {
       title: "Yehali Kossinna",
       src: Yehali,
-      role: "Emotional Support"
+      role: "Frontend Developer"
     },
     {
       title: "Gowtham Raveeindran",
-      src: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      role: "A"
+      src: Gowtham,
+      role: "Backend Developer"
     },
     {
       title: "Sihala Weragama",
-      src: "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      role: "A"
+      src: Sihala,
+      role: "Backend Developer"
     },
     {
       title: "Dhuwarakesh Wijayakumar",
-      src: "https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      role: "A"
+      src: Dhuwarakesh,
+      role: "Frontend Developer"
     },
     {
       title: "Humayra Shajahan",
       src: "https://assets.aceternity.com/the-first-rule.png",
-      role: "A"
+      role: "Backend Developer"
     },
   ];
 
