@@ -11,7 +11,7 @@ const Navbar = () => {
   }
 
   return (
-        <div className='flex h-24 px-4 mx-auto  md:px-20 justify-between items-center bg-transparent'>
+        <div className='flex h-24 mx-20 justify-between items-center bg-transparent'>
           <h1 className='w-full text-3xl font-bold bg-gradient-to-r from-[#49d154] to-[#b2ff5f] bg-clip-text text-transparent font-Montserrat'>
             MatchVerse
           </h1>
