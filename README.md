@@ -1,2 +1,2 @@
-# MatchVerse-LandingPage
- A commercial landing page for MatchVerse project.
+# SDGP_MatchVerse
+MatchVerse group project
