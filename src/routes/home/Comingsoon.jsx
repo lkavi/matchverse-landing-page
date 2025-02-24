@@ -2,6 +2,8 @@
 import React from 'react';
 import { Smartphone } from 'lucide-react';
 import BadmintonCourt from '../../assets/BadmintonCourt.jpeg'
+import gplay from '../../assets/gplay.png'
+import appstore from '../../assets/appstore.png'
 
 const ComingSoonPage = () => {
   return (
@@ -51,7 +53,7 @@ const ComingSoonPage = () => {
                 <div className="bg-neutral-900/50 backdrop-blur-sm rounded-lg p-3 relative z-10">
                   <div className="flex items-center gap-3">
                     <img
-                      src="/api/placeholder/40/40"
+                      src={appstore}
                       alt="Apple logo"
                       className="w-8 h-8"
                     />
@@ -66,7 +68,7 @@ const ComingSoonPage = () => {
             {/* Play Store Button */}
             <a href="#" className="w-52 group">
               <div className="rounded-xl border border-neutral-700 hover:border-neutral-500 transition-colors duration-200 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0 opacity-10">HELLO
                   <img
                     src="/api/placeholder/208/100"
                     alt="Court background"
@@ -76,7 +78,7 @@ const ComingSoonPage = () => {
                 <div className="bg-neutral-900/50 backdrop-blur-sm rounded-lg p-3 relative z-10">
                   <div className="flex items-center gap-3">
                     <img
-                      src="/api/placeholder/40/40"
+                      src={gplay}
                       alt="Google Play logo"
                       className="w-8 h-8"
                     />
@@ -106,7 +108,7 @@ const ComingSoonPage = () => {
                 Experience Gaming Like Never Before
               </h3>
               <p className="text-neutral-300">
-                Our app brings you seamless matchmaking, real-time game tracking, and an incredible social gaming experience. Stay tuned for the revolution in mobile gaming.
+                Our app brings you seamless matchmaking, real-time game tracking, and an incredible social gaming experience. Stay tuned for the revolution in gaming.
               </p>
             </div>
           </div>

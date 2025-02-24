@@ -2,39 +2,15 @@
 
 import React from 'react';
 import { Calendar, Users, MapPin, Clock, Trophy, Shield } from 'lucide-react';
-import { GlowingEffect } from "../../components/ui/glowing-effect";
 import { Cover } from "../../components/ui/cover";
 
-const GridItem = ({ area, icon: Icon, title, description }) => {
-  return (
-    <li className={`min-h-[14rem] list-none ${area}`}>
-      <div className="relative h-full rounded-2.5xl border p-2 md:rounded-3xl md:p-3">
-        <GlowingEffect
-          spread={40}
-          glow={true}
-          disabled={false}
-          proximity={64}
-          inactiveZone={0.01}
-        />
-        <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-0.75 p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D] md:p-6">
-          <div className="relative flex flex-1 flex-col justify-between gap-3">
-            <div className="w-fit rounded-lg border border-gray-600 p-2">
-              {Icon && <Icon className="h-4 w-4 text-white" />}
-            </div>
-            <div className="space-y-3">
-              <h3 className="pt-0.5 text-xl/[1.375rem] font-semibold font-sans -tracking-4 md:text-2xl/[1.875rem] text-balance text-white">
-                {title}
-              </h3>
-              <h2 className="[&_b]:md:font-semibold [&_strong]:md:font-semibold font-sans text-sm/[1.125rem] md:text-base/[1.375rem] text-neutral-300">
-                {description}
-              </h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-  );
-};
+// Import background images
+import matchmakingBg from '../../assets/1.jpeg';
+import bookingBg from '../../assets/2.jpeg';
+import securityBg from '../../assets/3.jpeg';
+import trackingBg from '../../assets/4.jpeg';
+import locationBg from '../../assets/5.jpeg';
+import schedulingBg from '../../assets/6.jpeg';
 
 const FeatureGrid = () => {
   const features = [
@@ -42,37 +18,43 @@ const FeatureGrid = () => {
       title: "Quick Matchmaking",
       description: "Find your perfect match within minutes. Our smart system pairs you with players of similar skill levels.",
       icon: Users,
-      area: "md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
+      area: "md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]",
+      bgImage: matchmakingBg
     },
     {
       title: "Seamless Booking",
       description: "Book courts and venues instantly with our real-time availability system. No more back-and-forth.",
       icon: Calendar,
-      area: "md:[grid-area:1/7/2/13] xl:[grid-area:1/5/2/9]"
+      area: "md:[grid-area:1/7/2/13] xl:[grid-area:1/5/2/9]",
+      bgImage: bookingBg
     },
     {
       title: "Secure Gaming",
       description: "Enjoy safe and fair gameplay with our verified player profiles and advanced algorithms.",
       icon: Shield,
-      area: "md:[grid-area:2/1/3/7] xl:[grid-area:1/9/2/13]"
+      area: "md:[grid-area:2/1/3/7] xl:[grid-area:1/9/2/13]",
+      bgImage: securityBg
     },
     {
       title: "Real-time Tracking",
       description: "Track your game statistics and progress in real-time with our advanced analytics.",
       icon: Trophy,
-      area: "md:[grid-area:2/7/3/13] xl:[grid-area:2/1/3/5]"
+      area: "md:[grid-area:2/7/3/13] xl:[grid-area:2/1/3/5]",
+      bgImage: trackingBg
     },
     {
       title: "Location Services",
       description: "Find nearby venues and players with our intelligent location-based matching system.",
       icon: MapPin,
-      area: "md:[grid-area:3/1/4/7] xl:[grid-area:2/5/3/9]"
+      area: "md:[grid-area:3/1/4/7] xl:[grid-area:2/5/3/9]",
+      bgImage: locationBg
     },
     {
       title: "Smart Scheduling",
       description: "Manage your gaming schedule efficiently with our intelligent booking system.",
       icon: Clock,
-      area: "md:[grid-area:3/7/4/13] xl:[grid-area:2/9/3/13]"
+      area: "md:[grid-area:3/7/4/13] xl:[grid-area:2/9/3/13]",
+      bgImage: schedulingBg
     }
   ];
 
@@ -87,16 +69,34 @@ const FeatureGrid = () => {
             <Cover className="text-xl">within a few minutes</Cover>
           </h1>
         </div>
+        
         <ul className="grid grid-cols-1 gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-6 xl:grid-rows-2">
-          {features.map((feature, index) => (
-            <GridItem
-              key={index}
-              area={feature.area}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          ))}
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <li key={index} className={`min-h-[14rem] list-none ${feature.area}`}>
+                <div 
+                  className="bg-neutral-900/50 backdrop-blur-sm rounded-xl p-8 relative z-10 h-full overflow-hidden transition-all duration-300 ease-in-out group hover:bg-neutral-800/50 hover:shadow-lg hover:shadow-emerald-900/20 hover:translate-y-1 hover:scale-[1.02]"
+                  style={{
+                    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${feature.bgImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                  <div className="flex justify-center mb-8 transition-transform duration-300 group-hover:scale-110 group-hover:text-emerald-400">
+                    <Icon className="w-16 h-16 text-white group-hover:text-emerald-400" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white mb-4 transition-colors duration-300 group-hover:text-emerald-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-neutral-300 transition-colors duration-300 group-hover:text-white">
+                    {feature.description}
+                  </p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
