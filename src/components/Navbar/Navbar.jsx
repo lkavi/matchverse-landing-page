@@ -10,13 +10,12 @@ const Navbar = () => {
 
   return (
     <div className='flex h-24 justify-between items-center bg-transparent px-4 md:mx-20'>
-      <h1 className='w-full text-3xl font-bold bg-gradient-to-r from-[#49d154] to-[#b2ff5f] bg-clip-text text-transparent font-Montserrat ml-0 md:ml-0'>
-        MatchVerse
-      </h1>
+      <Link to="/" h1 className='w-full text-3xl font-bold bg-gradient-to-r from-[#49d154] to-[#b2ff5f] bg-clip-text text-transparent font-Montserrat ml-0 md:ml-0'>
+        MatchVerse </Link>
       <ul className='hidden md:flex text-lg text-slate-50'>
-        <li className='p-4'><Link to='/' viewTransition>Home</Link></li>
-        <li className='p-4'><Link to='/about' viewTransition>About</Link></li>
-        <li className='p-4'><Link to='/contact' viewTransition>Contact</Link></li>
+        <li className='p-4'><Link to='/' viewTransition className='hover:text-[#b2ff5f] transition duration =300'>Home</Link></li>
+        <li className='p-4'><Link to='/about' viewTransition className='hover:text-[#b2ff5f] transition duration =300'>About</Link></li>
+        <li className='p-4'><Link to='/contact' viewTransition className='hover:text-[#b2ff5f] transition duration =300'>Contact</Link></li>
       </ul>
       <div className="text-white block md:hidden mr-0 md:mr-0" onClick={handleNav}>
         <div className="relative w-6 h-6">
