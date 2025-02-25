@@ -5,6 +5,7 @@ export const Timeline = ({ data }) => {
   const containerRef = useRef(null);
   const [height, setHeight] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const totalItems = data.length;
 
   useEffect(() => {
     if (ref.current) {
@@ -19,12 +20,17 @@ export const Timeline = ({ data }) => {
         const timelineRect = ref.current.getBoundingClientRect();
         const containerRect = containerRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
+        
+        // Calculate when to start and end the animation
         const startScrollAt = containerRect.top + window.scrollY - windowHeight * 0.6;
         const endScrollAt = startScrollAt + timelineRect.height;
         const currentScroll = window.scrollY;
+        
+        // Calculate raw progress (0-1)
         const scrollRange = endScrollAt - startScrollAt;
         const rawProgress = (currentScroll - startScrollAt) / scrollRange;
         const progress = Math.max(0, Math.min(1, rawProgress));
+        
         setScrollProgress(progress);
       }
     };
@@ -39,6 +45,25 @@ export const Timeline = ({ data }) => {
     };
   }, []);
 
+  // Calculate position for the progress line based on active dots
+  const calculateLineProgress = () => {
+    // If we have 5 items, we want each to take up 20% of the line
+    const itemHeight = 1 / totalItems;
+    
+    // Calculate how many items should be fully active (completed)
+    const activeItems = Math.floor(scrollProgress * totalItems);
+    
+    // Calculate partial progress for the current active item
+    const partialProgress = (scrollProgress * totalItems) % 1;
+    
+    // Calculate the total line progress 
+    // (completed items + partial progress of current item)
+    return Math.min(1, (activeItems * itemHeight) + (partialProgress * itemHeight));
+  };
+
+  // Get the actual line height progress
+  const lineProgress = calculateLineProgress();
+
   return (
     <div className="relative w-full bg-black bg-[radial-gradient(rgba(178,255,95,0.2)_1px,transparent_1.5px)] [background-size:16px_16px]" ref={containerRef}>
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
@@ -52,30 +77,36 @@ export const Timeline = ({ data }) => {
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
-        {data.map((item, index) => (
-          <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-neutral-800 flex items-center justify-center">
-                <div
-                  className={`h-4 w-4 rounded-full transition-colors duration-300 ${
-                    scrollProgress * data.length > index
-                      ? 'bg-green-400 border-green-500'
-                      : 'bg-neutral-700 border-neutral-600'
-                  } border p-2`}
-                />
+        {data.map((item, index) => {
+          // Calculate if this dot should be active
+          // This matches with our line progress calculation 
+          const isDotActive = (scrollProgress * totalItems) > index;
+          
+          return (
+            <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
+              <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+                <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-neutral-800 flex items-center justify-center">
+                  <div
+                    className={`h-4 w-4 rounded-full transition-colors duration-300 ${
+                      isDotActive
+                        ? 'bg-green-400 border-green-500'
+                        : 'bg-neutral-700 border-neutral-600'
+                    } border p-2`}
+                  />
+                </div>
+                <h3 className="hidden md:block text-xl md:text-5xl font-bold text-neutral-200 md:pl-20">
+                  {item.title}
+                </h3>
               </div>
-              <h3 className="hidden md:block text-xl md:text-5xl font-bold text-neutral-200 md:pl-20">
-                {item.title}
-              </h3>
+              <div className="relative pl-20 pr-4 md:pl-4 w-full">
+                <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-200">
+                  {item.title}
+                </h3>
+                {item.content}
+              </div>
             </div>
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-200">
-                {item.title}
-              </h3>
-              {item.content}
-            </div>
-          </div>
-        ))}
+          );
+        })}
 
         <div
           style={{
@@ -85,7 +116,7 @@ export const Timeline = ({ data }) => {
         >
           <div
             style={{
-              height: height * scrollProgress + "px",
+              height: height * lineProgress + "px",
               opacity: Math.min(1, scrollProgress * 10),
             }}
             className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-green-400 via-green-300 to-transparent from-[0%] via-[10%] rounded-full"
