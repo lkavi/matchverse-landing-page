@@ -9,9 +9,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 items-start">
           {/* Logo Section */}
           <div className="flex flex-col justify-start items-center md:items-start">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-[#49d154] to-[#b2ff5f] bg-clip-text text-transparent font-Montserrat mb-4">
-              MatchVerse
-            </h1>
+            <Link to="/" h1 className="text-3xl font-bold bg-gradient-to-r from-[#49d154] to-[#b2ff5f] bg-clip-text text-transparent font-Montserrat mb-4">
+              MatchVerse </Link>
             <p className="text-gray-300 text-center md:text-left">
               Connecting people through shared interests and passions.
             </p>
@@ -31,12 +30,6 @@ const Footer = () => {
           <div className="flex flex-col justify-start items-center md:items-end">
             <h3 className="text-xl font-semibold mb-4">Connect With Us</h3>
             <div className="flex space-x-4 mb-4">
-              <a href="#" className="text-gray-300 hover:text-[#b2ff5f] transition duration-300">
-                <FaFacebook size={24} />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-[#b2ff5f] transition duration-300">
-                <FaTwitter size={24} />
-              </a>
               <a href="#" className="text-gray-300 hover:text-[#b2ff5f] transition duration-300">
                 <FaInstagram size={24} />
               </a>
