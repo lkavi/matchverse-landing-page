@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer';
 import { BackgroundGradientAnimation } from "../../components/ui/background-gradient-animation";
 import { FocusCards } from '../../components/ui/Focus-cards'
 import { Cover } from "../../components/ui/cover";
@@ -94,9 +95,12 @@ const About = () => {
               <FocusCards cards={cards} />
             </div>
           </div>
-        </div>
+        </div>  <div className="relative z-50">
+        <Footer/>
+      </div>
       </div>
     </BackgroundGradientAnimation>
+    
   )
 }
 

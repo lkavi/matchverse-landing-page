@@ -5,6 +5,7 @@ import Features from "../../routes/home/Features";
 import ComingSoon from "../../routes/home/Comingsoon";
 import { DevelopmentTimeLine } from '../../routes/home/Developmenttimeline';
 import React from 'react';
+import Footer from '../../components/Footer/Footer';
 
 const home = () => {
   return (
@@ -26,6 +27,9 @@ const home = () => {
       </div>
       <div className="">
         <ComingSoon />
+      </div>
+      <div className="relative z-50">
+        <Footer/>
       </div>
     </div>
   )

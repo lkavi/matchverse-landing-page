@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import { Instagram, Mail, Linkedin, Phone, Send, User, MessageSquare } from 'lucide-react';
+import Footer from '../../components/Footer/Footer';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -242,6 +244,9 @@ const Contact = () => {
             so you can focus on what matters most - your game.
           </p>
         </div>
+      </div>
+      <div className="relative z-50">
+        <Footer />
       </div>
     </div>
   );
